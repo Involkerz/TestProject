@@ -15,11 +15,6 @@ namespace Test.Tools.WebElements
     {
     }
 
-    public string GetText()
-    {
-      return WebElement.Text;
-    }
-
     public void CleanUpText()
     {
       WebElement.Click();

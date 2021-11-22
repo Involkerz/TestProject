@@ -24,8 +24,16 @@ namespace Test.Tools.WebElements
     public WebElementBase Parent { get; set; }
     public By Locator { get; set; }
 
+    /// <summary>
+    ///   Searches for <see cref="IWebElement" /> when action is being performed.
+    /// </summary>
     public IWebElement WebElement => GetWebElement();
 
+    /// <summary>
+    ///   Searches for <see cref="IWebElement" /> withing the page or provided parent WebElement if any.
+    /// </summary>
+    /// <param name="withWait"></param>
+    /// <returns></returns>
     public IWebElement GetWebElement(bool withWait = true)
     {
       return Parent == default
@@ -33,6 +41,10 @@ namespace Test.Tools.WebElements
         : Browser.FindElement(Parent.WebElement, Locator, withWait);
     }
 
+    /// <summary>
+    ///   Checks if <see cref="IWebElement" /> is present.
+    ///   Will wait if element is not loaded.
+    /// </summary>
     public bool IsPresent()
     {
       try
@@ -51,6 +63,10 @@ namespace Test.Tools.WebElements
       }
     }
 
+    /// <summary>
+    ///   Checks if <see cref="IWebElement" /> is not present.
+    ///   Will not wait if element is not loaded. Saves time.
+    /// </summary>
     public bool IsNotPresent()
     {
       try

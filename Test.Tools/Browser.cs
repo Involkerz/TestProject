@@ -23,18 +23,16 @@ namespace Test.Tools
       return new WebDriverWait(_webDriver, timeout == default ? DefaultTimeout : timeout);
     }
 
-    public void Dispose()
-    {
-      _webDriver?.Quit();
-      _webDriver?.Dispose();
-      _webDriver = null;
-    }
-
     public void NavigateTo(string url)
     {
       _webDriver.Navigate().GoToUrl(url);
     }
 
+    /// <summary>
+    /// </summary>
+    /// <param name="selector"></param>
+    /// <param name="withWait"></param>
+    /// <returns></returns>
     public IWebElement FindElement(By selector, bool withWait = true)
     {
       if (withWait)
@@ -47,6 +45,12 @@ namespace Test.Tools
       return _webDriver.FindElement(selector);
     }
 
+    /// <summary>
+    /// </summary>
+    /// <param name="parent"></param>
+    /// <param name="selector"></param>
+    /// <param name="withWait"></param>
+    /// <returns></returns>
     public IWebElement FindElement(IWebElement parent, By selector, bool withWait = true)
     {
       if (withWait)
@@ -59,6 +63,12 @@ namespace Test.Tools
       return parent.FindElement(selector);
     }
 
+    /// <summary>
+    ///   Finds all <see cref="IWebElement" /> matching the search criteria within provided element.
+    /// </summary>
+    /// <param name="parent"></param>
+    /// <param name="selector"></param>
+    /// <param name="withWait"></param>
     public ReadOnlyCollection<IWebElement> FindElements(IWebElement parent, By selector, bool withWait = true)
     {
       if (withWait)
@@ -69,6 +79,13 @@ namespace Test.Tools
       }
 
       return parent.FindElements(selector);
+    }
+
+    public void Dispose()
+    {
+      _webDriver?.Quit();
+      _webDriver?.Dispose();
+      _webDriver = null;
     }
   }
 }

@@ -19,7 +19,7 @@ namespace Test.Scenarios.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class AddComputerFeature : object, Xunit.IClassFixture<AddComputerFeature.FixtureData>, System.IDisposable
+    public partial class ManageComputersFeature : object, Xunit.IClassFixture<ManageComputersFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,7 +31,7 @@ namespace Test.Scenarios.Features
 #line 1 "AddComputer.feature"
 #line hidden
         
-        public AddComputerFeature(AddComputerFeature.FixtureData fixtureData, Test_Scenarios_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public ManageComputersFeature(ManageComputersFeature.FixtureData fixtureData, Test_Scenarios_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,7 +40,7 @@ namespace Test.Scenarios.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Add Computer", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Manage computers", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -90,14 +90,18 @@ testRunner.Given("User starts browser and navigates to the Computers page", ((st
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="Add new computer")]
-        [Xunit.TraitAttribute("FeatureTitle", "Add Computer")]
+        [Xunit.TraitAttribute("FeatureTitle", "Manage computers")]
         [Xunit.TraitAttribute("Description", "Add new computer")]
+        [Xunit.TraitAttribute("Category", "AddComputer")]
+        [Xunit.TraitAttribute("Category", "Smoke")]
         public virtual void AddNewComputer()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "AddComputer",
+                    "Smoke"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add new computer", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 6
+#line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -130,28 +134,30 @@ this.FeatureBackground();
                             "",
                             "",
                             "RCA"});
-#line 7
+#line 8
  testRunner.When("User adds new computer on the Computers page", ((string)(null)), table1, "When ");
 #line hidden
-#line 10
+#line 11
  testRunner.Then("User checks that \'add\' notification message is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 11
- testRunner.Then("User checks that computer is present on the Computers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 12
+    testRunner.And("User checks that computer is present on the Computers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="Add new computer with invalid data")]
-        [Xunit.TraitAttribute("FeatureTitle", "Add Computer")]
+        [Xunit.TraitAttribute("FeatureTitle", "Manage computers")]
         [Xunit.TraitAttribute("Description", "Add new computer with invalid data")]
+        [Xunit.TraitAttribute("Category", "AddComputer")]
         public virtual void AddNewComputerWithInvalidData()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "AddComputer"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add new computer with invalid data", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 13
+#line 15
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -174,7 +180,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 14
+#line 16
  testRunner.Given("User clicks Add a new computer on the Computers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -187,13 +193,13 @@ this.FeatureBackground();
                             "1",
                             "2",
                             ""});
-#line 15
+#line 17
  testRunner.When("User configures new computer on Add New Computer page", ((string)(null)), table2, "When ");
 #line hidden
-#line 18
- testRunner.And("User confirms new computer creation on Add New Computer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 20
+    testRunner.And("User confirms new computer creation on Add New Computer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
-#line 19
+#line 21
  testRunner.Then("User checks that all validation errors are present on Add New Computer page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -201,14 +207,18 @@ this.FeatureBackground();
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="Delete existing computer")]
-        [Xunit.TraitAttribute("FeatureTitle", "Add Computer")]
+        [Xunit.TraitAttribute("FeatureTitle", "Manage computers")]
         [Xunit.TraitAttribute("Description", "Delete existing computer")]
+        [Xunit.TraitAttribute("Category", "DeleteComputer")]
+        [Xunit.TraitAttribute("Category", "Smoke")]
         public virtual void DeleteExistingComputer()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "DeleteComputer",
+                    "Smoke"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete existing computer", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 21
+#line 24
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -241,31 +251,35 @@ this.FeatureBackground();
                             "1987-12-30",
                             "2000-12-30",
                             ""});
-#line 22
+#line 25
  testRunner.Given("User adds new computer on the Computers page", ((string)(null)), table3, "Given ");
 #line hidden
-#line 25
+#line 28
  testRunner.When("User deletes created computer on the Computers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 26
+#line 29
  testRunner.Then("User checks that \'delete\' notification message is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 27
- testRunner.Then("User checks that computer is not present on the Computers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 30
+    testRunner.And("User checks that computer is not present on the Computers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="Edit existing computer")]
-        [Xunit.TraitAttribute("FeatureTitle", "Add Computer")]
+        [Xunit.TraitAttribute("FeatureTitle", "Manage computers")]
         [Xunit.TraitAttribute("Description", "Edit existing computer")]
+        [Xunit.TraitAttribute("Category", "ModifyComputer")]
+        [Xunit.TraitAttribute("Category", "Smoke")]
         public virtual void EditExistingComputer()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "ModifyComputer",
+                    "Smoke"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit existing computer", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 29
+#line 33
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -297,8 +311,8 @@ this.FeatureBackground();
                             "random",
                             "1987-12-30",
                             "2000-12-30",
-                            ""});
-#line 30
+                            "RCA"});
+#line 34
  testRunner.Given("User adds new computer on the Computers page", ((string)(null)), table4, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -310,15 +324,18 @@ this.FeatureBackground();
                             "random",
                             "1901-05-15",
                             "1999-01-01",
-                            ""});
-#line 33
+                            "IBM"});
+#line 37
  testRunner.When("User edits computer on the Computers page", ((string)(null)), table5, "When ");
 #line hidden
-#line 36
+#line 40
  testRunner.Then("User checks that \'edit\' notification message is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 37
+#line 41
     testRunner.And("User checks that computer is present on the Computers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+#line 42
+    testRunner.And("User checks that old computer is not present on the Computers page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -331,12 +348,12 @@ this.FeatureBackground();
             
             public FixtureData()
             {
-                AddComputerFeature.FeatureSetup();
+                ManageComputersFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                AddComputerFeature.FeatureTearDown();
+                ManageComputersFeature.FeatureTearDown();
             }
         }
     }

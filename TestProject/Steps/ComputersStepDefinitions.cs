@@ -43,8 +43,9 @@ namespace Test.Scenarios.Steps
     public void UserConfiguresNewComputerOnAddNewComputerPage(Table table)
     {
       var newComputerConfiguration = table.CreateInstance<ComputerDto>();
-      
-      if (newComputerConfiguration.ComputerName == "random") newComputerConfiguration.ComputerName = Guid.NewGuid().ToString();
+
+      if (newComputerConfiguration.ComputerName == "random")
+        newComputerConfiguration.ComputerName = Guid.NewGuid().ToString();
 
       AddComputerForm.ConfigureComputerData(newComputerConfiguration);
     }
@@ -55,7 +56,7 @@ namespace Test.Scenarios.Steps
       var computer = LastComputer;
       ComputersPage.DeleteComputer(computer);
     }
-    
+
     [When(@"User edits computer on the Computers page")]
     public void UserEditsComputerOnTheComputersPage(Table table)
     {
@@ -80,15 +81,12 @@ namespace Test.Scenarios.Steps
     public void UserAddsNewComputerOnTheComputersPage(Table table)
     {
       var computerDto = table.CreateInstance<ComputerDto>();
-
-      ComputersPage.OpenAddNewComputerForm();
       if (computerDto.ComputerName == "random") computerDto.ComputerName = Guid.NewGuid().ToString();
-      AddComputerForm.ConfigureComputerData(computerDto);
-      AddComputerForm.ClickAdd();
+
+      ComputersPage.AddNewComputer(computerDto);
 
       ListOfComputers.Add(computerDto);
     }
-
 
     [Then(@"User checks that '(.*)' notification message is present")]
     public void UserChecksThatNewComputerNotificationMessageIsPresent(string eventType)
@@ -114,6 +112,15 @@ namespace Test.Scenarios.Steps
       ComputersPage.ApplySearchByText(computer.ComputerName);
       ComputersPage.IsComputerPresent(computer).Should().BeTrue();
     }
+
+    [Then(@"User checks that old computer is not present on the Computers page")]
+    public void UserChecksThatOldComputerIsNotPresentOnTheComputersPage()
+    {
+      var computer = ListOfComputers.First();
+      ComputersPage.ApplySearchByText(computer.ComputerName);
+      ComputersPage.IsComputerPresent(computer).Should().BeFalse();
+    }
+
 
     [Then(@"User checks that computer is not present on the Computers page")]
     public void UserChecksThatComputerIsNotPresentOnTheComputersPage()

@@ -18,7 +18,6 @@ namespace Test.UI.Pages
       new ComputersTable(CurrentBrowser, By.XPath("//table[@class='computers zebra-striped']"));
 
     private TextBox FilterTextBox => new TextBox(CurrentBrowser, By.Id("searchbox"));
-    private Label CounterLabel => new Label(CurrentBrowser, By.XPath("//section[@id='main']/h1"));
     private Label NotificationLabel => new Label(CurrentBrowser, By.XPath("//div[@class='alert-message warning']"));
 
     /// <summary>
@@ -31,42 +30,12 @@ namespace Test.UI.Pages
     }
 
     /// <summary>
-    ///   Resets the search criteria.
-    /// </summary>
-    public void ResetSearch()
-    {
-      FilterTextBox.SetText(string.Empty);
-      FilterByNameButton.Click();
-    }
-
-    /// <summary>
-    ///   Gets the total computer count based on 'Computers found' label.
-    /// </summary>
-    /// <returns></returns>
-    public int GetComputersCount()
-    {
-      var counterText = CounterLabel.GetText();
-      return int.Parse(counterText.Replace(" computers found", string.Empty));
-    }
-
-    /// <summary>
     ///   Gets the notification message if present.
     ///   Otherwise returns empty string.
     /// </summary>
     public string GetNotificationMessage()
     {
       return NotificationLabel.GetText();
-    }
-
-    /// <summary>
-    ///   Adds new computer based on provided data.
-    /// </summary>
-    public void AddNewComputer(ComputerDto newComputerDto)
-    {
-      OpenAddNewComputerForm();
-      var addComputerForm = new AddComputerForm(CurrentBrowser);
-      addComputerForm.ConfigureComputerData(newComputerDto);
-      addComputerForm.ClickAdd();
     }
 
     /// <summary>
@@ -82,9 +51,18 @@ namespace Test.UI.Pages
     /// </summary>
     public bool IsComputerPresent(ComputerDto computerDto)
     {
-      if (ComputersTable.IsNotPresent()) return false;
+      return !ComputersTable.IsNotPresent() && ComputersTable.CheckIfSpecifiedComputerPresent(computerDto);
+    }
 
-      return ComputersTable.CheckIfSpecifiedComputerPresent(computerDto);
+    /// <summary>
+    ///   Adds new computer based on provided data.
+    /// </summary>
+    public void AddNewComputer(ComputerDto newComputerDto)
+    {
+      OpenAddNewComputerForm();
+      var addComputerForm = new AddComputerForm(CurrentBrowser);
+      addComputerForm.ConfigureComputerData(newComputerDto);
+      addComputerForm.ClickAdd();
     }
 
     /// <summary>

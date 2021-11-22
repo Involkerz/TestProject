@@ -15,12 +15,19 @@ namespace Test.Scenarios.Hooks
       _scenarioContext = scenarioContext;
     }
 
+    /// <summary>
+    ///   Creates empty containers in context for future use.
+    /// </summary>
     [BeforeScenario]
     public void PrepareContainers()
     {
       _scenarioContext.Set(new List<ComputerDto>());
     }
 
+
+    /// <summary>
+    ///   Clean up.
+    /// </summary>
     [AfterScenario]
     public void AfterScenario()
     {

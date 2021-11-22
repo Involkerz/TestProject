@@ -24,11 +24,9 @@ namespace Test.UI.Pages
     private WebElementBase ComputerDiscontinuedValidationHighlightZone =>
       new Label(ComputerDiscontinuedDateTextBox, By.XPath("./../.."));
 
-    private Button CancelButton()
-    {
-      return new Button(CurrentBrowser, By.XPath("//input[@class='btn primary']"));
-    }
-
+    /// <summary>
+    ///   Configures computer data on Form.
+    /// </summary>
     public void ConfigureComputerData(ComputerDto computerDto)
     {
       if (!string.IsNullOrEmpty(computerDto.ComputerName)) ComputerNameTextBox.SetText(computerDto.ComputerName);
@@ -41,16 +39,28 @@ namespace Test.UI.Pages
       if (!string.IsNullOrEmpty(computerDto.Company)) ComputerCompanyNameDropdownBox.Select(computerDto.Company);
     }
 
+    /// <summary>
+    ///   Checks if <see cref="ComputerNameTextBox" /> validation error is present.
+    ///   Returns True if item is highlighted as invalid.
+    /// </summary>
     public bool GetComputerNameValidationStatus()
     {
       return ComputerNameValidationHighlightZone.WebElement.GetAttribute("Class").Equals("clearfix error");
     }
 
+    /// <summary>
+    ///   Checks if <see cref="ComputerIntroducedDateTextBox" /> validation error is present.
+    ///   Returns True if item is highlighted as invalid.
+    /// </summary>
     public bool GetComputerIntroducedDateValidationStatus()
     {
       return ComputerIntroducedDateValidationHighlightZone.WebElement.GetAttribute("Class").Equals("clearfix error");
     }
 
+    /// <summary>
+    ///   Checks if <see cref="ComputerDiscontinuedDateTextBox" /> validation error is present.
+    ///   Returns True if item is highlighted as invalid.
+    /// </summary>
     public bool GetComputerDiscontinuedDateValidationStatus()
     {
       return ComputerDiscontinuedValidationHighlightZone.WebElement.GetAttribute("Class").Equals("clearfix error");

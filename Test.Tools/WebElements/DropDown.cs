@@ -16,6 +16,10 @@ namespace Test.Tools.WebElements
     {
     }
 
+    /// <summary>
+    ///   Selects the specified menu item in Drop down element.
+    /// </summary>
+    /// <param name="menuItem"></param>
     public void Select(string menuItem)
     {
       if (!string.IsNullOrEmpty(menuItem))
